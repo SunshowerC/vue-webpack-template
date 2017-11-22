@@ -1,0 +1,171 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.unselected {
+    user-select: none;
+}
+
+//重写
+/*
+.el-menu--horizontal>.el-menu-item:hover,
+.el-menu--horizontal>.el-submenu.is-active .el-submenu__title,
+.el-menu--horizontal>.el-submenu:hover .el-submenu__title {
+    border-color: transparent;
+}
+
+.el-menu--horizontal .el-submenu__title:hover {
+    background-color: #ffffff;
+
+}*/
+
+.el-form-item__label,.el-form-item__content {
+    font-size:16px;
+}
+
+
+.box-card {
+    margin-bottom: 50px;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+
+        font-size:26px;
+        color: #666;
+    }
+
+    .title {
+        font-size:26px;
+        color: #666;
+    }
+
+    .new-item {
+        width: 125px;
+    }
+
+
+
+    .el-card__body {
+        padding: 0;
+    }
+
+
+    .form {
+        padding: 0 20px;
+    }
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+
+    margin:20px 20px 20px 0;
+
+}
+
+
+.required .el-form-item__label:before {
+    content: '*';
+    color: #ff0000;
+}
+
+/*进度条样式*/
+.el-progress-bar__inner {
+    transition: all 0.3s;
+}
+
+
+/*链接样式*/
+.router-link {
+    color: #58B7FF;
+}
+
+.color-blue {
+    color: #20A0FF;
+}
+
+.color-success {
+    color: #13ce66;
+}
+
+.color-warning {
+    color: #f7ba2a;
+}
+
+.color-danger {
+    color: #ff4949;
+}
+
+
+.auth {
+    .el-tree-node__label {
+        color: #bbb;
+        cursor: not-allowed;
+    }
+}
+
+/*转换动画*/
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .3s
+}
+.fade-enter, .fade-leave-active {
+    opacity: 0
+}
+
+
+.btn-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+pre {
+    font-family:"Microsoft YaHei",Helvetica,Arial,sans-serif;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+    word-break: break-all;
+}
+
+/*notification英文自动换行*/
+.el-notification__content {
+    word-wrap: break-word;
+    text-align: left;
+}
+
+/*log信息，需要按格式化换行*/
+.log-info {
+    max-width: 500px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.el-tooltip__popper {
+    @extend .log-info
+}
+
+
+/*disabled表单字体颜色*/
+.el-input.is-disabled .el-input__inner,
+.el-textarea.is-disabled .el-textarea__inner,
+.el-checkbox__input.is-disabled+.el-checkbox__label{
+    color: #777 !important;
+}
+
+
+.el-message-box__message p {
+    word-wrap: break-word;
+    word-break: break-all;
+}

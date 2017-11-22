@@ -1,0 +1,19 @@
+.DS_Store
+.idea/
+node_modules/
+/build/
+!/build/test.js
+
+/config/manifest.json
+
+# map
+*.map
+
+# beyond compare
+*.orig
+
+# log
+npm-debug.log
+yarn-error.log
+
+
