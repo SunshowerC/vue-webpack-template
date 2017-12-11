@@ -1,5 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const resolve = path.resolve;
 const {
@@ -15,8 +17,8 @@ module.exports = {
     },
     output: {
         path: resolve(webRootDir, './build'),
-        publicPath: '/build/',
-        filename: 'build.js'
+        // publicPath: '/build/',
+        filename: '[name].js'
     },
     module: {
         rules: loader
@@ -51,6 +53,14 @@ module.exports = {
                 NODE_ENV: `"development"`
             },
             'packageEnv': `"${process.env.NODE_ENV}"`
+        }),
+
+        new HtmlWebpackPlugin({
+
+            filename:  'index.html' ,
+            template: resolve(webRootDir, './html-template/index.html'),
+            chunks: ['main'],
+            inject: true
         }),
     ]
 }
