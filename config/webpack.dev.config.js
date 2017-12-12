@@ -1,6 +1,6 @@
-var path = require('path')
-var webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+let path = require("path");
+let webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
 const resolve = path.resolve;
@@ -8,7 +8,7 @@ const {
     loader,
     webpackResolve,
     webRootDir
-} = require('./webpack.base.config.js');
+} = require("./webpack.base.config.js");
 
 
 let {
@@ -17,7 +17,7 @@ let {
     host,
     port,
     proxy
-} = require('../config');
+} = require("../config");
 
 
 
@@ -29,13 +29,13 @@ Object.entries(entry).forEach(entryItem => {
 
     htmlTplList.push(new HtmlWebpackPlugin({
         // favicon: resolve(webRootDir, './src/static/ico_pb_16X16.ico' ),
-        //html-withimg-loader 可以将html中img标签打包进输出文件
-        template: 'html-withimg-loader!' +  entryItem[1].template,
-        filename:  entryItem[1].template.replace('html-template/',''),
-        chunks: [ entryItem[0] ],
-        inject: true,
-    }))
-})
+        // html-withimg-loader 可以将html中img标签打包进输出文件
+        template: "html-withimg-loader!" + entryItem[1].template,
+        filename: entryItem[1].template.replace("html-template/", ""),
+        chunks  : [ entryItem[0] ],
+        inject  : true,
+    }));
+});
 
 
 module.exports = {
@@ -44,40 +44,40 @@ module.exports = {
         ...scriptEntry
     },
     output: {
-        path: resolve(outputPath),
+        path    : resolve(outputPath),
         // publicPath: '/build/',
-        filename: '[name].js'
+        filename: "[name].js"
     },
     module: {
         rules: loader
     },
     resolve: webpackResolve,
 
-    context: resolve(__dirname, '../'),  // 所有相对路径，相对于工程根目录
+    context: resolve(__dirname, "../"), // 所有相对路径，相对于工程根目录
 
     devServer: {
-        host: host,
-        port: port,
-        disableHostCheck: true,
+        host              : host,
+        port              : port,
+        disableHostCheck  : true,
         historyApiFallback: true,
-        noInfo: true,
+        noInfo            : true,
 
         proxy: proxy,
     },
     performance: {
         hints: false
     },
-    devtool: '#source-map',
+    devtool: "#source-map",
 
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: `"development"`
+            "process.env": {
+                NODE_ENV: "\"development\""
             },
-            'packageEnv': `"${process.env.NODE_ENV}"`
+            "packageEnv": `"${process.env.NODE_ENV}"`
         }),
 
 
         ...htmlTplList,
     ]
-}
+};

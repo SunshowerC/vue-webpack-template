@@ -41,16 +41,14 @@ export default [
     },
 
     {
-        path: "/notFound",
-
+        path     : "/notFound",
         component: NotFound,
         name     : "notFound"
     },
 
 
     {
-        path: "*",
-
+        path     : "*",
         component: NotFound,
         name     : "noSuchPage"
     }

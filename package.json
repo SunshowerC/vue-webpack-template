@@ -5,7 +5,7 @@
   "author": "willchen 1300546909@qq.com",
   "private": true,
   "scripts": {
-    "eslint": "eslint --fix --ext .js,.vue src",
+    "eslint": "eslint --fix --ext .js,.vue src config",
     "dll": "webpack --config config/webpack.dll.config.js -p",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js --open --hot",
     "develop": "cross-env NODE_ENV=develop webpack --config config/webpack.prod.config.js --progress --hide-modules",
