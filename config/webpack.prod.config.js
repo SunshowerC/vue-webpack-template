@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack'),
-    {loader, webpackResolve, webRootDir, outputDir} = require('./base.js');
+    {loader, webpackResolve, webRootDir} = require('./webpack.base.config.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -9,16 +9,38 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 
 const resolve = path.resolve;
- 
+let {
+    entry,
+    outputPath,
+    publicPath,
+    proxy,
+} = require('../config');
+
+let scriptEntry = {},
+    htmlTplList = [];
+
+/* 算出entry值与 其对应的 html-template */
+Object.entries(entry).forEach(entryItem => {
+    scriptEntry[ entryItem[0] ] = entryItem[1].script;
+
+    htmlTplList.push(new HtmlWebpackPlugin({
+        // favicon: resolve(webRootDir, './src/static/ico_pb_16X16.ico' ),
+        //html-withimg-loader 可以将html中img标签打包进输出文件
+        template: 'html-withimg-loader!' +  entryItem[1].template,
+        filename: resolve(outputPath, entryItem[1].template.replace('html-template/','') ),
+        chunks: [ entryItem[0] ],
+    }))
+})
 
 module.exports = {
     entry: {
-        "babel-polyfill": "babel-polyfill",
-        main: resolve(webRootDir, './src/main.js'),
+        // main: './src/main.js',
+        ...scriptEntry
     },
     output: {
-        path: resolve(outputDir, './assets'),
-        publicPath: '/assets/', // 公共资源路径
+        // path: resolve(outputPath, 'assets'),
+        // publicPath: 'assets', // 公共资源路径
+        path: resolve(outputPath, publicPath),
         filename: '[name].[chunkhash:8].js'
     },
     module: {
@@ -26,11 +48,16 @@ module.exports = {
     },
     resolve: webpackResolve,
 
- 
+    context: resolve(__dirname, '../'), // 所有相对路径，相对于工程根目录
+
     performance: {
         hints: false
     },
-    devtool: '#source-map'
+
+
+    devtool: '#source-map',
+
+    plugins: htmlTplList,
 
 }
 
@@ -45,27 +72,19 @@ module.exports.plugins = (module.exports.plugins || []).concat([
     }),
     /*清除之前打包过的文件*/
     new CleanWebpackPlugin(['assets'], {
-        root: outputDir,
+        root: resolve(outputPath),   // root 必须为绝对路径
         verbose: true,
         dry: false,
         exclude: [],
         watch: false
     }),
-    /*HTML模板*/
-    new HtmlWebpackPlugin({
-        // favicon: resolve(webRootDir, './src/static/ico_pb_16X16.ico' ),
-        //html-withimg-loader 可以将html中img标签打包进输出文件
-        template: 'html-withimg-loader!' + resolve(webRootDir, './html-template/index.html'), 
-        filename: resolve(outputDir, './index.html'),
-        title: 'XX系统',
 
-    }),
     /*把dll文件添加到输出的HTML中*/
     new AddAssetHtmlPlugin({
-        filepath: resolve(outputDir, './dll/vendor.dll.*.js'),
+        filepath: resolve(outputPath, './dll/vendor.dll.*.js'),
         includeSourcemap: false,
-        publicPath: '/dll',  //resolve(outputDir, 'dll')
-        // outputPath: resolve(outputDir, 'dll'),
+        publicPath: '/dll',  //resolve(outputPath, 'dll')
+        // outputPath: resolve(outputPath, 'dll'),
     }),
     /*压缩，混淆加密*/
     new webpack.optimize.UglifyJsPlugin({

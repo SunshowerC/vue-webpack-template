@@ -5,7 +5,7 @@ let fs = require('fs');
 let {resolve} = require('path');
 let exec = require('child_process').exec;
 
-let {outputDir,webRootDir} = require('./base');
+let {outputDir,webRootDir} = require('./webpack.base.config');
 
 
 
@@ -29,7 +29,7 @@ existDllFile()
             }
         });
     }).catch(()=>{
-        console.info(`There exist dll file.Skip it.`)
+        console.info(`There exists dll file.Skip it.`)
 })
 /*
 exec(cmdStr, (err,stdout,stderr)=>{

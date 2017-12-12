@@ -9,8 +9,7 @@ let webRootDir = resolve(__dirname, '../');
 // 工程根目录
 exports.webRootDir = webRootDir;
 
-// 输出目录
-exports.outputDir = resolve(webRootDir, './build')
+
 
 // loader
 exports.loader =
