@@ -32,6 +32,8 @@ Object.entries(entry).forEach(entryItem => {
     }));
 });
 
+
+
 module.exports = {
     entry: {
         // main: './src/main.js',
@@ -67,7 +69,7 @@ module.exports.plugins = (module.exports.plugins || []).concat([
     /* webpack 定义变量，可在其他模块访问到该变量值，以便根据不同环境来进行不同情况的打包操作*/
     new webpack.DefinePlugin({
         "process.env": {
-            NODE_ENV: "\"development\""
+            NODE_ENV: "\"production\""
         },
     }),
     /* 清除之前打包过的文件*/
@@ -116,12 +118,7 @@ module.exports.plugins = (module.exports.plugins || []).concat([
         manifest: require(resolve(webRootDir, "./config/manifest.json")),
 
     }),
-    // new webpack.optimize.CommonsChunkPlugin({
-    //     name: "vendor",
-    //     filename: "vendor.js",
-    //     minChunks: Infinity,
-    //     chunks: ["main"],  // 只在 main 的 entry 中使用到 commonChunk
-    // }),
+
 
 
 

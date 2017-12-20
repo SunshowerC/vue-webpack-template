@@ -15,7 +15,7 @@
 2. scss 预编译，postcss autoprefixer 向下兼容处理（基于postcss-loader，sass-loader）
 3. babel es6 编译,支持对象解构赋值`...`语法（基于babel-preset-env与transform-object-rest-spread插件）
 4. eslint 代码检查，代码自动格式化处理。（基于eslint，eslint-loader）
-5. 多入口配置
+5. 多入口配置（通过 config.js 配置）
 
 ## 开发环境
 0. webpack-dev-server 热加载页面。
