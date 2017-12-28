@@ -30,17 +30,17 @@ function computedEntryAndHtmlTpl() {
         // HtmlWebpackPlugin 赋值
         let htmlPluginObj = {};
 
-        if (typeof entryItem[1].template === 'string') {
+        if (typeof entryItem[1].template === "string") {
             htmlPluginObj = {
                 // html-withimg-loader 可以将html中img标签打包进输出文件
                 template: "html-withimg-loader!" + entryItem[1].template,
                 // replace 去除html 目录
-                filename: resolve(outputPath, entryItem[1].template.replace(/(?:\.\/)?([^\/]*\/)/, '') ),
+                filename: resolve(outputPath, entryItem[1].template.replace(/(?:\.\/)?([^\/]*\/)/, "")),
                 chunks  : [ entryItem[0] ],
             };
-        } else if(typeof entryItem[1].template === 'object') {
+        } else if(typeof entryItem[1].template === "object") {
             htmlPluginObj = entryItem[1].template;
-            htmlPluginObj.chunks = htmlPluginObj.chunks ||  [ entryItem[0] ]
+            htmlPluginObj.chunks = htmlPluginObj.chunks || [ entryItem[0] ];
         }
 
         htmlTplList.push(new HtmlWebpackPlugin(htmlPluginObj));
@@ -56,9 +56,9 @@ module.exports = {
     output: {
         // path: resolve(outputPath, 'assets'),
         // publicPath: 'assets', // 公共资源路径
-        path    : resolve(outputPath, publicPath),
-        publicPath: '/' + publicPath, // 公共资源路径
-        filename: "[name].[chunkhash:8].js"
+        path      : resolve(outputPath, publicPath),
+        publicPath: "/" + publicPath, // 公共资源路径
+        filename  : "[name].[chunkhash:8].js"
     },
     module: {
         rules: loader
