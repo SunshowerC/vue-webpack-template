@@ -24,18 +24,33 @@ let {
 let scriptEntry = {},
     htmlTplList = [];
 /* 算出entry值与 其对应的 html-template */
-Object.entries(entry).forEach(entryItem => {
-    scriptEntry[ entryItem[0] ] = entryItem[1].script;
+/* 算出entry值与 其对应的 html-template */
+computedEntryAndHtmlTpl();
+function computedEntryAndHtmlTpl() {
+    /* 算出entry值与 其对应的 html-template */
+    Object.entries(entry).forEach(entryItem => {
+        // 入口
+        scriptEntry[ entryItem[0] ] = entryItem[1].script;
 
-    htmlTplList.push(new HtmlWebpackPlugin({
-        // favicon: resolve(webRootDir, './src/static/ico_pb_16X16.ico' ),
-        // html-withimg-loader 可以将html中img标签打包进输出文件
-        template: "html-withimg-loader!" + entryItem[1].template,
-        filename: entryItem[1].template.replace("html-template/", ""),
-        chunks  : [ entryItem[0] ],
-        inject  : true,
-    }));
-});
+        // HtmlWebpackPlugin 赋值
+        let htmlPluginObj = {};
+
+        if (typeof entryItem[1].template === "string") {
+            htmlPluginObj = {
+                // html-withimg-loader 可以将html中img标签打包进输出文件
+                template: "html-withimg-loader!" + entryItem[1].template,
+                // replace 去除html 目录
+                filename: resolve(outputPath, entryItem[1].template.replace(/(?:\.\/)?([^\/]*\/)/, "")),
+                chunks  : [ entryItem[0] ],
+            };
+        } else if(typeof entryItem[1].template === "object") {
+            htmlPluginObj = entryItem[1].template;
+            htmlPluginObj.chunks = htmlPluginObj.chunks || [ entryItem[0] ];
+        }
+
+        htmlTplList.push(new HtmlWebpackPlugin(htmlPluginObj));
+    });
+}
 
 
 module.exports = {

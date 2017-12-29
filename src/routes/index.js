@@ -4,9 +4,8 @@
 
 const
     Index = resolve => require(["page/index/Index.vue"], resolve), // 首页
-    AppAction = resolve => require(["page/appAction/Index.vue"], resolve),
-    AppManage = resolve => require(["page/appManage/Index.vue"], resolve),
-    PhpConfig = resolve => require(["page/phpConfig/Index.vue"], resolve),
+    User = resolve => require(["page/user/Index.vue"], resolve),
+    UserDetail = resolve => require(["page/user/Detail.vue"], resolve),
 
 
     /* 404*/
@@ -16,29 +15,22 @@ const
 export default [
     /* 首页 */
     {
-        path     : "/workspace",
+        path     : "/",
         component: Index,
-        alias    : "/",
-        name     : "workspace"
+        name     : "index"
     },
 
     {
-        path     : "/appAction",
-        component: AppAction,
-        name     : "appAction"
+        path     : "/user",
+        component: User,
+        name     : "user"
+    },
+    {
+        path     : "/user/:id",
+        component: UserDetail,
+        name     : "userDetail"
     },
 
-    {
-        path     : "/phpconfPub",
-        component: PhpConfig,
-        name     : "phpconfPub"
-    },
-
-    {
-        path     : "/ipApp",
-        component: AppManage,
-        name     : "ipApp"
-    },
 
     {
         path     : "/notFound",

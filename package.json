@@ -8,13 +8,11 @@
     "eslint": "eslint --fix --ext .js,.vue src config",
     "dll": "webpack --config config/webpack.dll.config.js -p",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config config/webpack.dev.config.js --open --hot",
-    "develop": "cross-env NODE_ENV=develop webpack --config config/webpack.prod.config.js --progress --hide-modules",
     "build": "npm run dll && cross-env NODE_ENV=production webpack --config config/webpack.prod.config.js --progress --hide-modules"
   },
   "dependencies": {
     "axios": "^0.16.2",
     "babel-polyfill": "^6.23.0",
-    "element-ui": "^1.4.12",
     "vue": "^2.5.9",
     "vue-router": "^2.7.0",
     "vuex": "^2.4.0"

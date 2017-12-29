@@ -33,7 +33,7 @@
         name: "app",
         data() {
             return {
-                keepAliveList: [ "AppIndex", "appActionIndex", "publishPlanIndex"].join(",")
+                keepAliveList: []
             };
         },
         components: {
@@ -50,10 +50,11 @@
 </script>
 
 <style lang="sass" rel="stylesheet/scss" scoped>
-    @import "./style/common/variable";
 
     $mainBgc: #f6f6f6;
-
+    $logoW: 250px;
+    $gPadding: 20px;
+    
     .main {
         margin-left: $logoW;
         margin-top: 0;
@@ -63,14 +64,6 @@
 
         background-color: $mainBgc;
 
-    /*
-        perspective: 1500px;
-        perspective-origin: 50% 0;
-
-        &>div {
-            transform-style: preserve-3d;
-            !*backface-visibility: hidden;*!
-        }*/
 
     }
 

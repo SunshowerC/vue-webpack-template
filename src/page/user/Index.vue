@@ -1,5 +1,5 @@
 <template>
-    <h1>用户首页</h1>
+    <h1>用户页</h1>
 </template>
 
 

@@ -4,16 +4,11 @@ import App from "./App.vue";
 
 
 
-import "style/common/common.scss";
+import "style/common.scss";
 
 /* 注册路由组件 */
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
-
-/* 注册 ElementUI 组件， 如使用其他UI框架，可替换*/
-import "element-ui/lib/theme-default/index.css";
-import ElementUI from "element-ui";
-Vue.use(ElementUI);
 
 
 /* 浏览器请求库，绑定$http*/
