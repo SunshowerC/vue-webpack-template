@@ -6,7 +6,8 @@
 # 部署
 1. npm run product
 
-
+# 配置
+在 `config.js` 中进行代理转发配置，webpack多入口配置，抽离第三库配置等
 
 # 工程目录结构
 
