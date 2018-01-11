@@ -5,13 +5,14 @@
 
 module.exports = {
     root: true,
-    // parser: 'babel-eslint',
+    parser: 'babel-eslint',
     parserOptions: {
         "ecmaFeatures": {
             "jsx": true,
             "experimentalObjectRestSpread": true,
         },
-        "sourceType": "module"
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
     env: {
         browser: true,

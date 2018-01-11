@@ -58,6 +58,7 @@ module.exports = {
         // publicPath: 'assets', // 公共资源路径
         path      : resolve(outputPath, publicPath),
         publicPath: "/" + publicPath, // 公共资源路径
+        chunkFilename: "[name].[chunkhash:4].js",
         filename  : "[name].[chunkhash:8].js"
     },
     module: {
@@ -134,6 +135,15 @@ module.exports.plugins = (module.exports.plugins || []).concat([
 
     }),
 
+    new webpack.optimize.CommonsChunkPlugin({
+
+        name: "main",
+        minChunks: 2,
+        children: true,
+        deepChildren: true,
+        async: true,
+
+    })
 
 
 

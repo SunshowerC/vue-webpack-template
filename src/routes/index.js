@@ -1,15 +1,11 @@
-/**
- * Created by willchen on 2017/3/20.
- */
+/* eslint-disable */
 
 const
-    Index = resolve => require(["page/index/Index.vue"], resolve), // 首页
-    User = resolve => require(["page/user/Index.vue"], resolve),
-    UserDetail = resolve => require(["page/user/Detail.vue"], resolve),
-
-
+    Index = () => import(/* webpackChunkName: "index" */ "page/index/Index.vue"),
+    User = () => import(/* webpackChunkName: "userIndex" */ "page/user/Index.vue"),
+    UserDetail = () => import(/* webpackChunkName: "userDetail" */ "page/user/Detail.vue"),
     /* 404*/
-    NotFound = resolve => require(["page/NotFound.vue"], resolve);
+    NotFound = () => import(/* webpackChunkName: "notfound" */ "page/NotFound.vue");
 
 
 export default [

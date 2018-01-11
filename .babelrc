@@ -3,6 +3,7 @@
       "env"
   ],
   "plugins": [
+    "syntax-dynamic-import",
     "transform-vue-jsx",
     "transform-object-rest-spread",
     [
@@ -11,7 +12,7 @@
         "polyfill": true,
         "regenerator": true
       }
-    ],
+    ]
 
   ]
 }
