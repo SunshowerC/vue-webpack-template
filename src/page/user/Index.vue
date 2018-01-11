@@ -4,9 +4,12 @@
 
 
 <script>
+    import pub from "script/public";
     export default {
         data() {
-            return {};
+            return {
+
+            };
         },
 
         computed: {},
