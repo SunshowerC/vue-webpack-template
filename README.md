@@ -102,6 +102,7 @@
 0. `ExtractTextPlugin` css文件抽离打包，抽离css文件到单独的样式文件中。（基于extract-text-webpack-plugin）
 1. `HtmlWebpackPlugin` html模板：html文件根据html模板文件打包生成。并且能够在html模板文件使用img（基于html-webpack-plugin，html-withimg-loader）
 2. `dll`抽离第三方库，优化打包效率。（基于DllPlugin）
-3. 代码混淆加密压缩。
+3. 自动抽离 代码分割(code-splitting) 和 懒加载(lazy-load) 文件（如路由文件）中的公用模块，并异步按需加载该文件。（基于 `CommonsChunkPlugin` ）
+4. 代码混淆加密压缩。
 
 
