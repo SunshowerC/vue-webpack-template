@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 
 /* 注册 ElementUI 组件， 如使用其他UI框架，可替换*/
-import "element-ui/lib/theme-default/index.css";
+import "element-ui/lib/theme-chalk/index.css";
 import ElementUI from "element-ui";
 Vue.use(ElementUI);
 
