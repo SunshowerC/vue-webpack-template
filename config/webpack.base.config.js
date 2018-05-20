@@ -55,7 +55,7 @@ exports.loader =
                     fallback: "style-loader",
                     use     : ["css-loader", "postcss-loader", "sass-loader"]
                 }) : ["style-loader", "css-loader", "postcss-loader", "sass-loader"]
-        }, {
+        }, /*{
             test   : /\.(js|vue)$/,
             loader : "eslint-loader",
             exclude: /node_modules/,
@@ -66,7 +66,7 @@ exports.loader =
                 formatter  : require("eslint-friendly-formatter"),
                 emitWarning: true
             }
-        }
+        }*/
     ];
 
 
