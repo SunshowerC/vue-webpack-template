@@ -1,4 +1,7 @@
 
+# Deprecated
+请用 vue-cli 进行更加高效的开发！
+
 # 开发
 1. `cnpm i` or `npm i` 安装依赖包
 2. `npm run dev` 跑 webpack-dev-server服务
